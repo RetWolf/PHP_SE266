@@ -5,7 +5,7 @@ cpus: 1
 provider: virtualbox
 
 folders:
-    - map: .
+    - map: c:/SchoolStuff/PHP_SE266
       to: /home/vagrant/Code
 
 sites:
