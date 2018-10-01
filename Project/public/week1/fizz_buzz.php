@@ -8,18 +8,17 @@
 </head>
 <body>
   <?php
-    $arr = array();
     $max = 100;
-    for ($i=0; $i < $max; $i++) { 
-      $arr[$i] = $i + 1;
-      if ($arr[$i] % 2 === 0 && $arr[$i] % 3 === 0) {
+    for ($i=0; $i < $max; $i++) {
+      $num = $i + 1;
+      if ($num % 2 === 0 && $num % 3 === 0) {
         echo("Fizz Buzz" . "</br>");
-      } else if ($arr[$i] % 2 === 0) {
+      } else if ($num % 2 === 0) {
         echo("Fizz" . "</br>");
-      } else if ($arr[$i] % 3 === 0) {
+      } else if ($num % 3 === 0) {
         echo("Buzz" . "</br>");
       } else {
-        echo($arr[$i]) . "</br>";
+        echo($num . "</br>");
       }
     }
   ?>
