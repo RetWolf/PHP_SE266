@@ -9,14 +9,14 @@
 </head>
 <body>
   <div class="container">
-    <form action="creditcard_form.php" method="POST">
+    <form method="POST">
       <div class="form-group">
         <label>Amount Owed<input type="text" class="form-control" name="amountOwed" value="<?php echo isset($_POST['amountOwed']) ? $_POST['amountOwed'] : "" ?>"></label>
         <label>Interest Rate<input type="text" class="form-control" name="interestRate" value="<?php echo isset($_POST['interestRate']) ? $_POST['interestRate'] : "" ?>"></label>
         <label>Monthly Payment<input type="text" class="form-control" name="monthlyPayment" value="<?php echo isset($_POST['monthlyPayment']) ? $_POST['monthlyPayment'] : "" ?>"></label>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" type="submit">Calculate Damage</button>
+        <button class="btn btn-primary" type="submit">Calculate the Costs</button>
       </div>
     </form>
   </div>
@@ -39,8 +39,8 @@
             $totalInterest = 0;
             while ($_POST['amountOwed'] > 0) {
               $month++;
-              $interestPaid = round($interestPaid = $_POST['amountOwed'] * $_POST['interestRate'] / 100 / 12, 2);
-              $_POST['amountOwed'] = round($_POST['amountOwed'] += $interestPaid - $_POST['monthlyPayment'], 2);
+              $interestPaid = money_format("%.2i", round($interestPaid = $_POST['amountOwed'] * $_POST['interestRate'] / 100 / 12, 2));
+              $_POST['amountOwed'] = money_format("%.2i", round($_POST['amountOwed'] += $interestPaid - $_POST['monthlyPayment'], 2));
               $totalInterest += $interestPaid;
               echo(
               "<tr>
