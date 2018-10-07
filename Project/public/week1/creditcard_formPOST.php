@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="container">
-    <form method="POST">
+    <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
       <div class="form-group">
         <label>Amount Owed<input type="text" class="form-control" name="amountOwed" value="<?php echo isset($_POST['amountOwed']) ? $_POST['amountOwed'] : "" ?>"></label>
         <label>Interest Rate<input type="text" class="form-control" name="interestRate" value="<?php echo isset($_POST['interestRate']) ? $_POST['interestRate'] : "" ?>"></label>
@@ -35,7 +35,7 @@
           if($_POST['amountOwed'] !== "" && $_POST['interestRate'] !== "" && $_POST['monthlyPayment'] !== "") {
             $startingAmount = $_POST['amountOwed'];
             $month = 0;
-            $interestPaid = 0;
+            $interestPaid = 0;  
             $totalInterest = 0;
             while ($_POST['amountOwed'] > 0) {
               $month++;
