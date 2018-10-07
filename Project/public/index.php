@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <h1>Matt Conway</h1>
-    <a href="https://github.com/RetWolf">My GitHub</a><br />
+    <a href="https://github.com/RetWolf/PHP_SE266">My GitHub Repo</a><br />
     <a href="http://php.net/docs.php">Official PHP Docs</a><br />
     <a href="https://phptherightway.com/">PHP The Right Way - Online Book</a><br />
     <a href="https://stackoverflow.com/">Stack Overflow</a><br />
@@ -32,10 +32,12 @@
           if (! is_dir($dir)) { echo("Invalid directory path"); }
           $solutions = array();
           $demos = array(
-            "http://ict.neit.edu/001433733/public_html/SE266/week1/creditcard_form.php",
+            "http://ict.neit.edu/001433733/public_html/SE266/week1/creditcard_formGET.php",
+            "http://ict.neit.edu/001433733/public_html/SE266/week1/creditcard_formPOST.php",
           );
           $assignments = array(
-            "Credit Card Form",
+            "Credit Card Form (Using GET)",
+            "Credit Card Form (Using POST)",
           );
           foreach (scandir($dir) as $file) {
             if ("." === $file) continue;
