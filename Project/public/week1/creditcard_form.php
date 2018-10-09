@@ -39,8 +39,8 @@
             $totalInterest = 0;
             while ($_POST['amountOwed'] > 0) {
               $month++;
-              $interestPaid = money_format("%.2i", round($interestPaid = $_POST['amountOwed'] * $_POST['interestRate'] / 100 / 12, 2));
-              $_POST['amountOwed'] = money_format("%.2i", round($_POST['amountOwed'] += $interestPaid - $_POST['monthlyPayment'], 2));
+              $interestPaid = number_format(round($interestPaid = $_POST['amountOwed'] * $_POST['interestRate'] / 100 / 12, 2), 2);
+              $_POST['amountOwed'] = number_format(round($_POST['amountOwed'] += $interestPaid - $_POST['monthlyPayment'], 2), 2);
               $totalInterest += $interestPaid;
               echo(
               "<tr>

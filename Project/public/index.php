@@ -32,12 +32,10 @@
           if (! is_dir($dir)) { echo("Invalid directory path"); }
           $solutions = array();
           $demos = array(
-            "http://ict.neit.edu/001433733/public_html/SE266/week1/creditcard_formGET.php",
-            "http://ict.neit.edu/001433733/public_html/SE266/week1/creditcard_formPOST.php",
+            "http://ict.neit.edu/001433733/public_html/SE266/week1/creditcard_form.php",
           );
           $assignments = array(
-            "Credit Card Form (Using GET)",
-            "Credit Card Form (Using POST)",
+            "Credit Card Form",
           );
           foreach (scandir($dir) as $file) {
             if ("." === $file) continue;
