@@ -10,6 +10,7 @@
 <body>
   <div class="container">
     <h1>Matt Conway</h1>
+    <p>I will be editing the file structure for the assignments soon so I can create a more helpful table</p>
     <a href="https://github.com/RetWolf/PHP_SE266">My GitHub Repo</a><br />
     <a href="http://php.net/docs.php">Official PHP Docs</a><br />
     <a href="https://phptherightway.com/">PHP The Right Way - Online Book</a><br />
@@ -33,9 +34,13 @@
           $solutions = array();
           $demos = array(
             "http://ict.neit.edu/001433733/public_html/SE266/week1/creditcard_form.php",
+            "#",
+            "http://ict.neit.edu/001433733/public_html/SE266/week2/",
           );
           $assignments = array(
             "Credit Card Form",
+            "Utility Files",
+            "Lab 2 - Actors",
           );
           foreach (scandir($dir) as $file) {
             if ("." === $file) continue;
