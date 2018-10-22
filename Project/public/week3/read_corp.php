@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>View all Corps</title>
+  <title>Read Corp</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
@@ -45,12 +45,18 @@
     </div>
   </nav>
 
-  <p>Corporation ID: <?php echo $result['id']; ?></p>
-  <p>Corporation Name: <?php echo $result['corp']; ?></p>
-  <p>Incorporation Date: <?php echo $result['incorp_dt']; ?></p>
-  <p>Email: <?php echo $result['email']; ?></p>
-  <p>Zip Code: <?php echo $result['zipcode']; ?></p>
-  <p>Owner: <?php echo $result['owner']; ?></p>
-  <p>Phone: <?php echo $result['phone']; ?></p>
+  <div class="container col-md-8 text-center">
+    <p>Corporation ID: <?php echo $result['id']; ?></p>
+    <p>Corporation Name: <?php echo $result['corp']; ?></p>
+    <p>Incorporation Date: <?php echo $result['incorp_dt']; ?></p>
+    <p>Email: <?php echo $result['email']; ?></p>
+    <p>Zip Code: <?php echo $result['zipcode']; ?></p>
+    <p>Owner: <?php echo $result['owner']; ?></p>
+    <p>Phone: <?php echo $result['phone']; ?></p>
+
+    <a href="./" class="btn btn-primary" role="button">View All</a>
+    <a href="update_corp.php?id=<?php echo $result['id']; ?>" class="btn btn-secondary" role="button">Update</a>
+    <a href="delete_corp.php?id=<?php echo $result['id']; ?>" class="btn btn-danger" role="button">Delete</a>
+  </div>
 </body>
 </html>
