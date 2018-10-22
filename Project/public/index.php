@@ -36,11 +36,13 @@
             "http://ict.neit.edu/001433733/public_html/SE266/week1/creditcard_form.php",
             "#",
             "http://ict.neit.edu/001433733/public_html/SE266/week2/",
+            "http://ict.neit.edu/001433733/public_html/SE266/week3/",
           );
           $assignments = array(
             "Credit Card Form",
             "Utility Files",
             "Lab 2 - Actors",
+            "Lab 3 - Corps",
           );
           foreach (scandir($dir) as $file) {
             if ("." === $file) continue;
