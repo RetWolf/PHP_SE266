@@ -37,12 +37,16 @@
             "#",
             "http://ict.neit.edu/001433733/public_html/SE266/week2/",
             "http://ict.neit.edu/001433733/public_html/SE266/week3/",
+            "http://ict.neit.edu/001433733/public_html/SE266/week4",
+            "http://ict.neit.edu/001433733/public_html/SE266/week5",
           );
           $assignments = array(
             "Credit Card Form",
             "Utility Files",
             "Lab 2 - Actors",
             "Lab 3 - Corps",
+            "Lab 4 - Searching & Sorting",
+            "Lab 5 - Schools"
           );
           foreach (scandir($dir) as $file) {
             if ("." === $file) continue;
