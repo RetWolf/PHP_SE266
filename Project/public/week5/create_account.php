@@ -28,19 +28,36 @@
     </div>
   </nav>
   <?php
-    include '../utils/dbConnect.php';
     include '../utils/isPostRequest.php';
     include '../utils/formValidation.php';
-
+    
     $feedback = "";
-
+    $usernameError = false;
+    $passwordError = false;
+    
     if(isPostRequest()) {
       $password = filter_input(INPUT_POST, 'userpassword');
       $passwordcheck = filter_input(INPUT_POST, 'userpasswordcheck');
       if(checkPasswordBool($password, $passwordcheck)) {
+        include '../utils/dbConnect.php';
+        $passwordError = false;
         $username = filter_input(INPUT_POST, 'username');
-        $results = checkUsernameBool($username);
+        if(checkUsernameBool($username)) {
+          include '../utils/dbUsers.php';
+          $usernameError = false;
+          $result = createUser($username, $password);
+          $feedback = $result;
+          if($result = "User Successfully Created!") {
+            session_start();
+            $_SESSION['authed'] = true;
+            header("Location: ./authed/upload.php");
+          }
+        } else {
+          $usernameError = true;
+          $feedback = "A user already exist with that name.";
+        }
       } else {
+        $passwordError = true;
         $feedback = "Please fix passwords. Min length of 6 characters and passwords must match.";
       }
     }
@@ -49,15 +66,15 @@
     <form method="post">
       <div class="form-group col-md-8 m-auto">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="username" required>
+        <input type="text" class="form-control <?php echo $usernameError ? 'is-invalid' : ''; ?>" id="username" name="username" required>
       </div>
       <div class="form-group col-md-8 m-auto">
         <label class="mt-3" for="userpassword">Password</label>
-        <input type="password" class="form-control" id="userpassword" name="userpassword" placeholder="At least 6 characters" required>
+        <input type="password" class="form-control <?php echo $passwordError ? 'is-invalid' : ''; ?>" id="userpassword" name="userpassword" placeholder="At least 6 characters" required>
       </div>
       <div class="form-group col-md-8 m-auto">
         <label class="mt-3" for="userpasswordcheck">Re-Enter Password</label>
-        <input type="password" class="form-control" id="userpasswordcheck" name="userpasswordcheck" required>
+        <input type="password" class="form-control <?php echo $passwordError ? 'is-invalid' : ''; ?>" id="userpasswordcheck" name="userpasswordcheck" required>
       </div>
       <div class="form-group col-md-8 m-auto">
         <button class="btn btn-primary mt-3" type="submit">Create Account</button>

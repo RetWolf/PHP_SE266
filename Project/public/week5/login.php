@@ -27,6 +27,28 @@
       </ul>
     </div>
   </nav>
+  <?php 
+    include '../utils/isPostRequest.php';
+
+    $feedback = "";
+    if(isPostRequest()) {
+      include '../utils/dbConnect.php';
+      include '../utils/formValidation.php';
+      
+      $username = filter_input(INPUT_POST, 'username');
+      
+      if(isUserBool($username)) {
+        include '../utils/dbUsers.php';
+        $password = filter_input(INPUT_POST, 'userpassword');
+        $result = loginUser($username, $password);
+        var_dump($result);
+      } else {
+        $feedback = "Error with your username or password.";
+      }
+    }
+
+    
+  ?>
   <div class="container col-md-6 mt-5">
     <form method="post">
       <div class="form-group col-md-8 m-auto">
@@ -40,6 +62,7 @@
       <div class="form-group col-md-8 m-auto">
         <button class="btn btn-primary mt-3" type="submit">Login</button>
       </div>
+      <div class="col-md-8 m-auto"><?php echo $feedback ?></div>
     </form>
   </div>
 </body>
