@@ -28,6 +28,7 @@
     </div>
   </nav>
   <?php 
+    session_start();
     include '../utils/isPostRequest.php';
 
     $feedback = "";
@@ -41,9 +42,19 @@
         include '../utils/dbUsers.php';
         $password = filter_input(INPUT_POST, 'userpassword');
         $result = loginUser($username, $password);
-        var_dump($result);
+        if($result) {
+          $_SESSION['authed'] = true;
+          $_SESSION['user'] = $username;
+          header("Location: ./authed/upload.php");
+        } else {
+          $feedback = "Error with your password.";
+        }
       } else {
-        $feedback = "Error with your username or password.";
+        $feedback = "Error with your username.";
+      }
+    } else {
+      if(isset($_SESSION['authed']) && $_SESSION['authed']) {
+        header('Location: ./authed/upload.php');
       }
     }
 

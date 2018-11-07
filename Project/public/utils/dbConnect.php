@@ -5,7 +5,7 @@
     $config = array(
       'DB_DNS' => 'mysql:host=ict.neit.edu;port=5500;dbname=se266_matt',
       'DB_USER' => 'se266_matt',
-      'DB_PASSWORD' => '1433733'
+      'DB_PASSWORD' => '1433733',
     );
     
     // Local Config
@@ -17,7 +17,9 @@
     );
     */
     try {
-      $db = new PDO($config['DB_DNS'], $config['DB_USER'], $config['DB_PASSWORD']);
+      $db = new PDO($config['DB_DNS'], $config['DB_USER'], $config['DB_PASSWORD'] /*array(
+        PDO::MYSQL_ATTR_LOCAL_INFILE => true,
+      )*/);
       $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     } catch (Exception $ex) {
       echo $ex->getMessage();

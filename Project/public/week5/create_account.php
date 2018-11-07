@@ -50,6 +50,7 @@
           if($result = "User Successfully Created!") {
             session_start();
             $_SESSION['authed'] = true;
+            $_SESSION['user'] = $username;
             header("Location: ./authed/upload.php");
           }
         } else {
@@ -59,6 +60,11 @@
       } else {
         $passwordError = true;
         $feedback = "Please fix passwords. Min length of 6 characters and passwords must match.";
+      }
+    } else {
+      session_start();
+      if(isset($_SESSION['authed']) && $_SESSION['authed']) {
+        header('Location: ./authed/upload.php');
       }
     }
   ?>
