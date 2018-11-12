@@ -43,7 +43,7 @@
         $file = fopen("./uploads/schools.csv", "rb");
         $table = "schools";
         $startTime = microtime(true);
-        $result = importCSV($"./uploads/school.csv", $table);
+        $result = importCSV($file, $table);
         echo "Elapsed time is: ".(microtime(true) - $startTime)." seconds.<br/>";
         echo $result;
       }
