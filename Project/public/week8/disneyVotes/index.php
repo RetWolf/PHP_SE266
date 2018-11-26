@@ -48,12 +48,12 @@
       })
       .then(response => response.json());
     }
-    const displayChart = () => {
+    const createChart = () => {
       fetch('../../utils/disneyVoteData.php')
       .then(response => response.json())
       .then(json => {
         const ctx = document.getElementById('chart');
-        new Chart(ctx, {
+        ctx.chart = new Chart(ctx, {
                   type: 'bar',
                   data: {
                     labels: json[0],
@@ -83,21 +83,36 @@
               });
       })
       .catch(err => console.error(err));
-      }
+    }
+    const updateChart = () => {
+      fetch('../../utils/disneyVoteData.php', {
+        cache: 'no-cache'
+      })
+      .then(response => response.json())
+      .then(json => {
+        const ctx = document.getElementById('chart');
+        ctx.chart.data.datasets[0].data = json[1];
+        ctx.chart.update();
+      })
+      .catch(err => console.error(err));
+    }
     const buttons = document.querySelectorAll('button');
     const status = document.getElementById('status');
     const clickHandler = e => {
       const formData = new FormData();
       formData.append('id', e.target.dataset.idx);
       postData(`../../utils/disneyVote.php`, formData)
-      .then(data => status.innerText = data)
+      .then(data => {
+        status.innerText = data;
+        updateChart();
+      })
       .catch(err => console.error(err));
-      displayChart();
+      
     }
     for(button of buttons) {
       button.addEventListener("click", clickHandler);
     }
-    displayChart();
+    createChart();
   </script>
 </body>
 </html>
