@@ -41,6 +41,7 @@
             "http://ict.neit.edu/001433733/public_html/SE266/week5",
             "http://ict.neit.edu/001433733/public_html/SE266/week6/timecardPrototype/",
             "http://ict.neit.edu/001433733/public_html/SE266/week6/timecardImplementation/",
+            "http://ict.neit.edu/001433733/public_html/SE266/week8/disneyVotes/",
           );
           $assignments = array(
             "Credit Card Form",
@@ -51,6 +52,7 @@
             "Lab 5 - Schools",
             "Lab 6 - Timecard Prototype",
             "Lab 6 - Timecard Implementation",
+            "Lab 8 - Disney Votes",
           );
           foreach (scandir($dir) as $file) {
             if ("." === $file) continue;
