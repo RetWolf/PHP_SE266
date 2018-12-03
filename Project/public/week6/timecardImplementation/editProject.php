@@ -32,10 +32,21 @@
 
     $results = "";
     if(isPostRequest()) {
+      session_start();
+      $id = $_SESSION["id"];
       $name = filter_input(INPUT_POST, "projectName");
       $details = filter_input(INPUT_POST, "projectDetails");
-      $results = createProject($name, $details);
+      $results = editProject($id, $name, $details);
+      session_destroy();
       header("Location: ./index.php");
+    } else {
+      session_start();
+      $id = filter_input(INPUT_GET, "id");
+      $project = getOneProject($id);
+      $_SESSION["id"] = $project[0]["id"];
+      $_SESSION["name"] = $project[0]["name"];
+      $_SESSION["details"] = $project[0]["details"]; 
+      session_write_close();
     }
 
     include './templates/projectForm.php';
