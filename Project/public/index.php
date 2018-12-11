@@ -42,7 +42,7 @@
             "http://ict.neit.edu/001433733/public_html/SE266/week6/timecardPrototype/",
             "http://ict.neit.edu/001433733/public_html/SE266/week6/timecardImplementation/",
             "http://ict.neit.edu/001433733/public_html/SE266/week8/disneyVotes/",
-            "http://ict.neit.edu/001433733/public_html/SE266/week9/",
+            "http://ict.neit.edu/001433733/public_html/SE266/week9/index.php",
           );
           $assignments = array(
             "Credit Card Form",
